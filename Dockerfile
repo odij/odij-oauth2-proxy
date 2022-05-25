@@ -29,9 +29,9 @@ ARG BUILDPLATFORM
 # Set the cross compilation arguments based on the TARGETPLATFORM which is
 #  automatically set by the docker engine.
 RUN case ${TARGETPLATFORM} in \
-         "linux/amd64")  GOARCH=amd64  ;; \
-         "linux/arm64")  GOARCH=arm64  ;; \
-         "linux/arm/v6") GOARCH=arm GOARM=6  ;; \
+    "linux/amd64")  GOARCH=amd64  ;; \
+    "linux/arm64")  GOARCH=arm64  ;; \
+    "linux/arm/v6") GOARCH=arm GOARM=6  ;; \
     esac && \
     printf "Building OAuth2 Proxy for arch ${GOARCH}\n" && \
     GOARCH=${GOARCH} VERSION=${VERSION} make build && touch jwt_signing_key.pem
